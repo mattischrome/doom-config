@@ -44,6 +44,8 @@
 
 ;; This opens emacs maximised but unfortunately renders it impervious to Rectangle.app et al :( so I've turned it off for now 
 ;;(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; This one doesn't work that well either
+;; (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; make sure that alt+3 gives us the hash symbol we truly crave
 (define-key key-translation-map (kbd "M-3") (kbd "#"))
