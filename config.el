@@ -42,11 +42,21 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Documents/Notes/Org")
 
-;; in your config.el, add:
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; This opens emacs maximised but unfortunately renders it impervious to Rectangle.app et al :( so I've turned it off for now 
+;;(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; make sure that alt+3 gives us the hash symbol we truly crave
 (define-key key-translation-map (kbd "M-3") (kbd "#"))
+
+;; Run a word count where needed
+(setq doom-modeline-enable-word-count t)
+
+;; try and get the server running if it isn't already?
+;; (Not sure if this is the right place to put this)
+(require 'server)
+
+(unless (server-running-p)
+  (server-start))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -79,7 +89,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(! after org
+(after! org
    (map! :map org-mode-map
          :n "M-j" #'org-metadown
          :n "M-k" #'org-metaup))
