@@ -50,15 +50,19 @@
 ;; make sure that alt+3 gives us the hash symbol we truly crave
 (define-key key-translation-map (kbd "M-3") (kbd "#"))
 
+;; Make it easier to invoke commands while in insert mode
+;; Default alt leader is M+SPC which clashes with Alfred (and therefore a _lot_ of muscle memory)
+(setq doom-leader-alt-key "s-SPC")
+
 ;; Run a word count where needed
 (setq doom-modeline-enable-word-count t)
 
 ;; try and get the server running if it isn't already?
 ;; (Not sure if this is the right place to put this)
-(require 'server)
+;;(require 'server)
 
-(unless (server-running-p)
-  (server-start))
+;;(unless (server-running-p)
+  ;;(server-start))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
