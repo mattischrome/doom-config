@@ -36,6 +36,8 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
+;; Note that SPC t l toggles between the three line numbering modes so
+;; line numbers are still available if needed.
 (setq display-line-numbers-type nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -43,7 +45,7 @@
 (setq org-directory "~/Documents/Notes/Org")
 
 ;; This opens emacs maximised but unfortunately renders it impervious to Rectangle.app et al :( so I've turned it off for now 
-;;(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;; This one doesn't work that well either
 ;; (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
@@ -101,4 +103,4 @@
          :n "M-k" #'org-metaup))
 
 ;; Let's tell projectile where my projects can all be found
-(setq projectile-project-search-path "~/Documents/Projects")
+;; (setq projectile-project-search-path "~/Documents/Projects")
