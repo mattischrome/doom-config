@@ -36,7 +36,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -99,3 +99,6 @@
    (map! :map org-mode-map
          :n "M-j" #'org-metadown
          :n "M-k" #'org-metaup))
+
+;; Let's tell projectile where my projects can all be found
+(setq projectile-project-search-path "~/Documents/Projects")
