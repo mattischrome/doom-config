@@ -42,7 +42,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Documents/Notes/Org")
+(setq org-directory "~/Documents/Notes/")
 
 ;; This opens emacs maximised but unfortunately renders it impervious to Rectangle.app et al :( so I've turned it off for now 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -115,7 +115,7 @@
 (set-eshell-alias! "rake" "echo this is an alias for rake")
 
 
-(setq deft-directory "~/Documents/Notes/Org"
+(setq deft-directory "~/Documents/Notes/"
       deft-extensions '("org" "txt")
       deft-recursive t)
 
@@ -134,29 +134,56 @@
   :config
   (setq pdf-view-midnight-colors '("#ABB2BF" . "#282C35")))
 
-(use-package! noflet)
+;; (use-package! noflet)
 
-(defun timu-org-make-capture-frame ()
-  "Create a new frame and run `org-capture'."
-  (interactive)
-  (make-frame '((name . "capture")
-                (top . 300)
-                (left . 700)
-                (width . 80)
-                (height . 25)))
-  (select-frame-by-name "capture")
-  (delete-other-windows)
-  (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
-    (org-capture)))
+;; (defun timu-org-make-capture-frame ()
+;;   "Create a new frame and run `org-capture'."
+;;   (interactive)
+;;   (make-frame '((name . "capture")
+;;                 (top . 300)
+;;                 (left . 700)
+;;                 (width . 80)
+;;                 (height . 25)))
+;;   (select-frame-by-name "capture")
+;;   (delete-other-windows)
+;;   (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
+;;     (org-capture)))
 
-(defadvice org-capture-finalize
-    (after delete-capture-frame activate)
-  "Advise capture-finalize to close the frame."
-  (if (equal "capture" (frame-parameter nil 'name))
-      (delete-frame)))
+;; (defadvice org-capture-finalize
+;;     (after delete-capture-frame activate)
+;;   "Advise capture-finalize to close the frame."
+;;   (if (equal "capture" (frame-parameter nil 'name))
+;;       (delete-frame)))
 
-(defadvice org-capture-destroy
-    (after delete-capture-frame activate)
-  "Advise capture-destroy to close the frame."
-  (if (equal "capture" (frame-parameter nil 'name))
-      (delete-frame)))
+;; (defadvice org-capture-destroy
+;;     (after delete-capture-frame activate)
+;;   "Advise capture-destroy to close the frame."
+;;   (if (equal "capture" (frame-parameter nil 'name))
+;;       (delete-frame)))
+
+;; (require ‘latex-preview-pane)
+;; (latex-preview-pane-enable)
+(setq bibtex-completion-bibliography '("~/Documents/Notes/Bibliography/References.bib"))
+
+;; TODO: Work out how to set up this keyboard shortcut properly (e.g. is it in the wrong place? can I use the doom map! function instead?)
+;; NB: purpose of the shortcut is to insert a citation from the bibtex file at point
+
+;;(map!
+ ;;(:after org
+  ;;:map evil-org-mode-map
+  ;;:g (kbd "C-c ]") 'org-ref-cite-insert-ivy))
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+

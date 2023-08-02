@@ -21,10 +21,10 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       ;;(company +tng)           ; the ultimate code completion backend
+       (company +tng)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy +fuzzy)               ; a search engine for love and life
+       ;;(ivy +fuzzy)               ; a search engine for love and life
        (vertico +icons)           ; the search engine of the future
 
        :ui
@@ -159,6 +159,7 @@
         +capture           ; org-capture in and outside of Emacs
         +export            ; Exporting org to whatever you want
         +journal           ; Journalling with emacs
+        +noter             ; Synchronise notes in document
         +pandoc            ; Enable pandoc integration into the Org exporter.
         +pretty            ; Enables pretty unicode symbols for bullets and priorities, and better syntax highlighting for latex.
         +roam2             ; Enables integration with org-roam v2
@@ -187,7 +188,7 @@
        ;;zig               ; C, but simpler
 
        :email
-       (mu4e +org +gmail)
+       ;;(mu4e +org +gmail)
        ;;notmuch
        ;;(wanderlust +gmail)
 

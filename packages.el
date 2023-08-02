@@ -58,5 +58,9 @@
 ;; When using bibtex-completion via the `biblio` module
 (unpin! bibtex-completion helm-bibtex ivy-bibtex)
 
-(package! noflet
-  :recipe (:host github :repo "nicferrier/emacs-noflet"))
+;; (package! noflet
+;;   :recipe (:host github :repo "nicferrier/emacs-noflet"))
+
+(package! org-ref)
+(package! ivy-bibtex)
+(package! org-roam-ui)
