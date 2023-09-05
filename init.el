@@ -158,6 +158,7 @@
         +babel             ; running code in org
         +capture           ; org-capture in and outside of Emacs
         +export            ; Exporting org to whatever you want
+        +hugo              ; Export an org file to a Hugo blog
         +journal           ; Journalling with emacs
         +noter             ; Synchronise notes in document
         +pandoc            ; Enable pandoc integration into the Org exporter.
